@@ -1,0 +1,57 @@
+@mixin circle ($x, $color) {
+    width: $x;
+    height: $x;
+    border: $x/20 solid $color;
+    border-radius: 50%;
+    box-shadow: $x/20 $x/14 $x/10 $color;
+}
+
+.cir1 { 
+    @include circle(100px, orange);
+}
+
+.cir2 {
+    @include circle(300px, yellow);
+}
+
+.circle1, .circle2{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
+
+.circle1>p, .circle2>p .circle{
+    font-size: 3rem;
+}
+
+.cir3 {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    
+}
+
+.cir3 span{
+    display: flex;
+}
+
+@mixin ring ($size, $color) {
+  border : solid calc(#{$size}/8) $color;
+  border-radius : 50%;
+  background-color :transparent;
+  height : $size;
+  width : $size;
+  margin: calc(#{$size}*0.2);
+  position : relative;
+  display: inline-block;
+} 
+
+@for $i from 1 through 6 {
+    .cir3 span:nth-child(#{$i}) {
+      @include ring(calc(#{$i}*10px), #353535);
+      z-index : $i;
+      margin-right: calc(#{-$i}*8px);
+    }
+  }
